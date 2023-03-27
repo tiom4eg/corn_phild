@@ -43,6 +43,11 @@ mt19937 rng(chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::no
 const int INF = 1e9 + 7, MD = 998244353, MAX = 100007, R = 1 << 17, MOD = 1040015701, MOD2 = 1e9 + 9, LG = 20, B = 40;
 const ll INFLL = 1e18 + 7;
 
+/*
+https://codeforces.com/group/n9yVVJUjBU/contest/430845/problem/F
+set in point, max on path
+*/
+
 int T, tin[MAX], tout[MAX], sub[MAX], up[LG][MAX], head[MAX];
 vi g[MAX];
 
