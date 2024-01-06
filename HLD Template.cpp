@@ -75,24 +75,3 @@ struct hld_forest {
         val = a;
     }
 };
-
-// Example of usage
-struct info {
-    unsigned ll v;
-    ll c;
-    info() : v(0), c(0) {}
-    info(unsigned ll x) : v(x), c(1) {}
-    info(unsigned ll a, ll b) : v(a), c(b) {}
-};
-struct lazy {
-    ll v;
-    lazy() : v(0) {}
-    lazy(ll x) : v(x) {}
-};
-
-info operator+(const info a, const info b) { return info(a.v + b.v, a.c + b.c); }
-info& operator+=(info& a, const info b) { return a = a + b; }
-info operator+(const info a, const lazy b) { return info(a.v + b.v * a.c, a.c); }
-info& operator+=(info& a, const lazy b) { return a = a + b; }
-lazy operator+(const lazy a, const lazy b) { return lazy(a.v + b.v); }
-lazy& operator+=(lazy& a, const lazy b) { return a = a + b; }
