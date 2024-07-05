@@ -1,3 +1,5 @@
+// Example: https://atcoder.jp/contests/abc359/submissions/55232935
+
 struct compressed_tree {
     int h, tt;
     vector <vector <int>> g;
