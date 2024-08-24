@@ -18,11 +18,7 @@
 #include <chrono>
 #include <ctime>
 #include <random>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-#include <ext/pb_ds/hash_policy.hpp>
 using namespace std;
-using namespace __gnu_pbds;
 
 #ifdef ONLINE_JUDGE
 #pragma GCC optimize("O3")
