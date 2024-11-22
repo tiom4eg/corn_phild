@@ -14,4 +14,16 @@ struct mint {
     }
     mint inv() { return this->operator^(MOD - 2); }
     mint operator/(mint o) const { return this->operator*(o.inv()); }
+    void operator+=(const mint& o) { *this = this->operator+(o); }
+    void operator-=(const mint& o) { *this = this->operator-(o); }
+    void operator*=(const mint& o) { *this = this->operator*(o); }
+    void operator/=(const mint& o) { *this = this->operator/(o); }
+    friend istream& operator>>(istream& in, mint& m) {
+        in >> m.v;
+        return in;
+    }
+    friend ostream& operator<<(ostream& out, const mint& m) {
+        out << m.v;
+        return out;
+    }
 };
