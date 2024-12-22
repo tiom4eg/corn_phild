@@ -14,6 +14,8 @@ struct mint {
     }
     mint inv() { return this->operator^(MOD - 2); }
     mint operator/(mint o) const { return this->operator*(o.inv()); }
+    bool operator==(const mint o) const { return v == o.v; }
+    bool operator!=(const mint o) const { return v != o.v; }
     void operator+=(const mint& o) { *this = this->operator+(o); }
     void operator-=(const mint& o) { *this = this->operator-(o); }
     void operator*=(const mint& o) { *this = this->operator*(o); }
@@ -26,4 +28,20 @@ struct mint {
         out << m.v;
         return out;
     }
+};
+
+template <typename M>
+struct str_hash {
+    vector <M> h, p;
+    str_hash() : h(1), p(1, 1) {}
+    str_hash(const string& s, M b) {
+        h.resize(s.size() + 1);
+        p.resize(s.size() + 1);
+        p[0] = 1;
+        for (int i = 0; i < s.size(); ++i) {
+            h[i + 1] = h[i] * b + s[i];
+            p[i + 1] = p[i] * b;
+        }
+    }
+    M get(int l, int r) { return h[r] - h[l] * p[r - l]; }
 };
