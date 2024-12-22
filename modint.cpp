@@ -16,6 +16,7 @@ struct mint {
     mint operator/(mint o) const { return this->operator*(o.inv()); }
     bool operator==(const mint o) const { return v == o.v; }
     bool operator!=(const mint o) const { return v != o.v; }
+    bool operator<(const mint o) const { return v < o.v; }
     void operator+=(const mint& o) { *this = this->operator+(o); }
     void operator-=(const mint& o) { *this = this->operator-(o); }
     void operator*=(const mint& o) { *this = this->operator*(o); }
