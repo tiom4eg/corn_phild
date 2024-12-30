@@ -31,18 +31,32 @@ struct mint {
     }
 };
 
+namespace std {
+    template <int MOD>
+    struct hash <mint <MOD>> {
+        int operator()(const mint <MOD>& m) const { return m.v; }
+    };
+}
+
 template <typename M>
-struct str_hash {
+struct seq_hash {
     vector <M> h, p;
-    str_hash() : h(1), p(1, 1) {}
-    str_hash(const string& s, M b) {
-        h.resize(s.size() + 1);
-        p.resize(s.size() + 1);
+    M b;
+    seq_hash(M b) : h(1), p(1, 1), b(b) {}
+    template <typename It>
+    seq_hash(It beg, It end, M b) : b(b) {
+        h.resize(distance(beg, end) + 1); // std::distance should exists for all adequate iterators
+        p.resize(distance(beg, end) + 1);
         p[0] = 1;
-        for (int i = 0; i < s.size(); ++i) {
-            h[i + 1] = h[i] * b + s[i];
+        for (size_t i = 0; beg != end; ++i, ++beg) {
+            h[i + 1] = h[i] * b + M(*beg);
             p[i + 1] = p[i] * b;
         }
     }
-    M get(int l, int r) { return h[r] - h[l] * p[r - l]; }
+    template <typename T>
+    void operator+=(const T x) {
+        h.push_back(h.back() * b + M(x));
+        p.push_back(p.back() * b);
+    }
+    M get(size_t l, size_t r) { return h[r] - h[l] * p[r - l]; }
 };
