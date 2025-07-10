@@ -129,7 +129,7 @@ struct poor_bigint {
             } else {
                 poor_bigint shifted = o.shift_right(sz(rem.a) - sz(o.a) - 1);
                 u32 coeff = ((u64)rem.a.back() * BASE + rem.a[sz(rem.a) - 2] - 1) / o.a.back();
-                rem = rem - shifted * poor_bigint(coeff - 1);
+                rem = rem - shifted * poor_bigint(coeff);
             }
         }
         return rem;
