@@ -1,5 +1,15 @@
 // thanks Kevin Sun!
-// usage: https://codeforces.com/contest/2207/submission/365892314
+/*
+usage:
+
+y_combinator(
+	[&](auto self, *args) {
+		...
+		self(other_args);
+		...
+	}
+)(args);
+*/
 
 namespace std {
  
